@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #f6f8fb;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --primary: #0e7490;
+    --primary-600: #0891b2;
+    --primary-700: #0e7490;
+    --primary-50: #ecfeff;
+    --accent: #b45309;
+    --success: #15803d;
+    --warning: #b45309;
+    --error: #b91c1c;
+  }
+  .dark {
+    --bg: #0b1220;
+    --surface: #111a2e;
+    --surface-2: #1b2436;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #233148;
+    --primary: #22d3ee;
+    --primary-600: #06b6d4;
+    --primary-700: #0891b2;
+    --primary-50: #083344;
+    --accent: #fbbf24;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --error: #ef4444;
+  }
+  html { font-family: 'Tajawal', 'Cairo', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .surface { background: var(--surface); }
+  .surface-2 { background: var(--surface-2); }
+  .text-muted { color: var(--text-muted); }
+  .border-app { border-color: var(--border); }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-primary { background: var(--primary-600); color: white; }
+  .btn-primary:hover { background: var(--primary-700); }
+  .btn-ghost { background: transparent; color: var(--text); }
+  .btn-ghost:hover { background: var(--surface-2); }
+  .btn-danger { background: var(--error); color: white; }
+  .btn-danger:hover { filter: brightness(0.92); }
+  .input {
+    @apply w-full rounded-lg px-3 py-2 text-sm outline-none transition;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .input:focus { border-color: var(--primary-600); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary-600) 20%, transparent); }
+  .card { @apply rounded-xl p-4; background: var(--surface); border: 1px solid var(--border); }
+  .label { @apply block text-sm font-medium mb-1; color: var(--text); }
+  .chip { @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium; }
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors w-full text-start;
+    color: var(--text-muted);
+  }
+  .nav-link:hover { background: var(--surface-2); color: var(--text); }
+  .nav-link.active { background: color-mix(in srgb, var(--primary-600) 12%, transparent); color: var(--primary-700); }
+  .dark .nav-link.active { color: var(--primary); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Sticky header for attendance */
+.sticky-col {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 2;
+  background: var(--surface);
+}
